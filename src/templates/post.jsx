@@ -1,15 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Header from "../components/header"
+import Ecosystem from "../components/ecosystem"
 
 const Post = ({ data: { prismicAgency } }) => {
   const { data } = prismicAgency
   return (
     <React.Fragment>
-	<Header />
-      <h1>{data.hero_title.text}</h1>
-	  <p>{data.hero_des.text}</p>
-     <img src={data.hero_image.url} alt="hero" />
+    	<Header />
+     
+      <Ecosystem />
     </React.Fragment>
   )
 }
