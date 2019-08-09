@@ -3,7 +3,9 @@
     margin-left: 10%;
     margin-top: 5%;
 }
-
+.elementor-active, .elementor-portfolio__filter:hover {
+    background-color: #c1ebec;
+}
 .portfolio-filters {
     font-size: 16px;
     font-weight: 500;
@@ -15,6 +17,7 @@
     justify-content: center;
 }
 .portfolio-filters .portfolio-filter {
+    font-size: 14px;
     list-style-type: none;
     cursor: pointer;
     padding: 8px;
@@ -46,8 +49,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 150px;
     height: 150px;
+    padding: 10px;
     transition: all 0.35s;
 }
 .filter-block-wrap .filter-block-content.portfolio-filter-block img {
@@ -58,9 +63,14 @@
 .filter-block-wrap .filter-block-content.portfolio-filter-block:hover img {
     transform: scale(1.1);
 }
+.filter-block-wrap .filter-block-content.portfolio-filter-block h3 {
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 0 0;
+}
 @media only screen and (min-width: 768px) and (max-width: 979px) {
     .filter-block-wrap {
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
     .filter-block-wrap .filter-block-content {
         width: 100%;
@@ -68,7 +78,9 @@
 }
 @media only screen and (max-width: 767px) {
     .filter-block-wrap {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 5%;
+        margin-right: 5%;
     }
     .filter-block-wrap .filter-block-content {
         width: 100%;

@@ -1,48 +1,50 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { withPrefix, Link } from "gatsby"
+import Helmet from "react-helmet"
 // Import custom style for this component
 //import '../Ecosystem/style.scss'
 import "./ecosystem.css"
 const Ecosystem = (props) => (
   <div class="eco-container">
-  <ul class="portfolio-filters">
-  <li class="portfolio-filter active">All</li>
+  <ul class="elementor-portfolio__filters elementor_post_filter portfolio-filters" data-tagfilter="catname" data-activefilter="marketing-automation">
+  <li class="portfolio-filter elementor-portfolio__filter elementor-active" data-filter="__all">All</li>
   {props.ecotypes.map(course => {
           return (
             <React.Fragment>
-              <li class="portfolio-filter ">{course.node.data.name.text}</li>
+              <li class="portfolio-filter elementor-portfolio__filter" data-filter={course.node.slugs}>{course.node.data.name.text}</li>
             </React.Fragment>
           )
         })}
 	</ul>
   <div class="filter-block-wrap">
   {props.ecosys.map(ecosystem => {
+          var ecotype = '__all'
+          if(ecosystem.node.data.type){
+              ecotype = ecosystem.node.data.type.slug
+          }
+
           return (
             <React.Fragment>
-              <div class="filter-block-content portfolio-filter-block">
-                 <img src={ecosystem.node.data.logo.url} alt=""/>
+              <div class="elementor-post elementor-grid-item elementor-post-filter ex_frt"
+               data-catname={ecotype}>
+                <div class="filter-block-content portfolio-filter-block">
+                  <div>
+                    <img src={ecosystem.node.data.logo.url} alt=""/>
+                    <h3>{ecosystem.node.data.name.text}</h3> 
+                  </div>
+                </div>
                </div>
             </React.Fragment>
           )
         })}
  
-  <div class="filter-block-content portfolio-filter-block">
-    <img src="https://1c56ea1o8ppe3ily2evtgp8h-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Hubspot-Logo.png" alt=""/>
-  </div>
-  <div class="filter-block-content portfolio-filter-block">
-    <img src="https://1c56ea1o8ppe3ily2evtgp8h-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Marketo-Logo-circle.png" alt=""/>
-  </div>
-  <div class="filter-block-content portfolio-filter-block">
-    <img src="https://1c56ea1o8ppe3ily2evtgp8h-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Pardot-Logo.png" alt=""/>
-  </div>
-  <div class="filter-block-content portfolio-filter-block">
-    <img src="https://1c56ea1o8ppe3ily2evtgp8h-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Mailchimp-Logo.png" alt=""/>
-  </div>
-  <div class="filter-block-content portfolio-filter-block">
-    <img src="https://1c56ea1o8ppe3ily2evtgp8h-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Adobe-campaign-logo.png" alt=""/>
-  </div>
- 
-</div></div>
+  
+</div>
+<Helmet>
+ <script src={withPrefix('ecosystem.js')} type="text/javascript" />
+</Helmet>
+</div>
+
 )
 
 export default Ecosystem

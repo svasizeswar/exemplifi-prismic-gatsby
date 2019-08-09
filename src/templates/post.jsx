@@ -36,6 +36,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          slugs
           data {
             name {
               text
