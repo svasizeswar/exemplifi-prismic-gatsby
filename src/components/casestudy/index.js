@@ -2,7 +2,7 @@ import React from 'react'
 import { withPrefix, Link } from "gatsby"
 import Helmet from "react-helmet"
 //import Img from "gatsby-image"
-import "./Casestudy.css"
+import "./casestudy.css"
  
 
 const Casestudy = (props) => (
