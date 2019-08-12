@@ -2,16 +2,20 @@ import React from "react"
 import { graphql } from "gatsby"
 import Header from "../components/header"
 import Ecosystem from "../components/ecosystem"
+import Casestudy from "../components/casestudy"
 
-const Post = ({ data: { prismicAgency, allPrismicEcosystemType, allPrismicEcosystem } }) => {
-  const { data } = prismicAgency
+const Post = ({ data: { prismicAgency, allPrismicEcosystemType, allPrismicEcosystem, allCasestudy, allIndustry } }) => {
+  //const { data } = prismicAgency
   const ecotypes = allPrismicEcosystemType.edges
   const ecosys = allPrismicEcosystem.edges
+  const casestudies = allCasestudy.edges
+  const industries = allIndustry.edges
   return (
-    <React.Fragment>
+    <React.Fragment key='1'>
     	<Header />
       <Ecosystem ecotypes = {ecotypes}  ecosys = {ecosys}/>
-      </React.Fragment>
+      <Casestudy casestudies = {casestudies} industries={industries}/>
+    </React.Fragment>
   )
 }
 
@@ -48,6 +52,7 @@ export const pageQuery = graphql`
     allPrismicEcosystem {
       edges {
         node {
+          id
           data {
             logo {
               url
@@ -59,6 +64,29 @@ export const pageQuery = graphql`
               slug
             }
           }
+        }
+      }
+    }
+    allCasestudy {
+      edges {
+        node {
+          id
+          title
+          image
+          description
+          csurl
+          csplatform
+          csindustry
+          csdesignpartner
+        }
+      }
+    }
+    allIndustry {
+      edges {
+        node {
+          id
+          title
+          name
         }
       }
     }

@@ -10,6 +10,7 @@ require("dotenv").config({
 
 module.exports = {
   plugins: [
+    `gatsby-plugin-sharp`, `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-prismic`,
       options: {
@@ -18,6 +19,13 @@ module.exports = {
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
       },
     },
-   
+    {
+      resolve: "gatsby-source-exemplifi",
+      options: {
+        key: "vasi-api-v1",
+        q: "yellow flowers",
+      },
+    },
+  
   ],
 }
