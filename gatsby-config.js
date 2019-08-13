@@ -9,8 +9,24 @@ require("dotenv").config({
 })
 
 module.exports = {
+  siteMetadata: {
+    title: `Exemplifi`,
+    siteUrl: `https://exemplifi.io`,
+    description: `Blazing fast modern Gatsby site with React, Typescript, Material UI and Sass`,
+  },
   plugins: [
-    `gatsby-plugin-sharp`, `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
     {
       resolve: `gatsby-source-prismic`,
       options: {
@@ -26,6 +42,5 @@ module.exports = {
         q: "yellow flowers",
       },
     },
-  
   ],
 }

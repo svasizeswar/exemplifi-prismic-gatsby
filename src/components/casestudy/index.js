@@ -4,7 +4,6 @@ import Helmet from "react-helmet"
 //import Img from "gatsby-image"
 import "./casestudy.css"
  
-
 const Casestudy = (props) => (
     <div className="case-container">
     <div className="casestudy-container"> 
@@ -46,10 +45,7 @@ const Casestudy = (props) => (
             </React.Fragment>
           )
     })}
-	 
-  
- 
-  
+
  <Helmet>
  <script src={withPrefix('custom.js')} type="text/javascript" />
  <script src={withPrefix('casestudy.js')} type="text/javascript" />
