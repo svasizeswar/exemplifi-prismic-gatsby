@@ -37,9 +37,11 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
     } = this.props.data.site.siteMetadata
   
     return (
-      <div className={styles.Container}>
-        <h1>{title}</h1>
-        <p>{description}</p>
+      <div>
+        <div className={styles.Container}>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </div>
        
       </div>
     )

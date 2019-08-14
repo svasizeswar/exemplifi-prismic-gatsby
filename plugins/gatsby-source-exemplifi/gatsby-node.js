@@ -5,7 +5,10 @@ const CS_API_URI =
   'https://exemplifidev.wpengine.com/wp-json/api-v2/case-study';
 
 const IND_API_URI =
-  'https://exemplifidev.wpengine.com/wp-json/api-v2/industry';  
+  'https://exemplifidev.wpengine.com/wp-json/api-v2/pod/industry';  
+
+const CMS_API_URI =
+  'https://exemplifidev.wpengine.com/wp-json/api-v2/pod/cms_platform';   
 
 exports.sourceNodes = async ({boundActionCreators}) => {
   const {createNode} = boundActionCreators;
@@ -48,4 +51,21 @@ exports.sourceNodes = async ({boundActionCreators}) => {
           },
         });
     }  
+    const cmsresult = await axios.get(CMS_API_URI);
+    for (const platform of cmsresult.data)  {
+          await createNode({
+            children: [],
+            id: platform.id.toString(),
+            title: platform.title,
+            name:platform.name,
+            parent: null,
+            internal: {
+              type: 'platform',
+              contentDigest: crypto
+                .createHash(`md5`)
+                .update(JSON.stringify(platform))
+                .digest(`hex`),
+            },
+          });
+      }  
 };

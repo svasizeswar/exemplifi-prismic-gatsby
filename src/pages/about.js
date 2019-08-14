@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Link from '../components/Link';
 import ProTip from '../components/ProTip';
 import Navbar from '../components/Navbar';
-
+import Article from '../components/article'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -38,6 +38,7 @@ export default function App() {
        Home Page
       </Button>
         <ProTip />
+        <Article/> 
         <Copyright />
       </Box>
     </Container>

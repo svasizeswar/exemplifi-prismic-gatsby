@@ -4,17 +4,24 @@ import Header from "../components/header"
 import Ecosystem from "../components/ecosystem"
 import Casestudy from "../components/casestudy"
 
-const Post = ({ data: { prismicAgency, allPrismicEcosystemType, allPrismicEcosystem, allCasestudy, allIndustry } }) => {
+const Post = ({ data: { prismicAgency, 
+                        allPrismicEcosystemType,
+                        allPrismicEcosystem, 
+                        allCasestudy, 
+                        allIndustry,
+                        allPlatform } }) => 
+  {
   //const { data } = prismicAgency
   const ecotypes = allPrismicEcosystemType.edges
   const ecosys = allPrismicEcosystem.edges
   const casestudies = allCasestudy.edges
   const industries = allIndustry.edges
+  const platforms = allPlatform.edges
   return (
     <React.Fragment key='1'>
     	<Header />
       <Ecosystem ecotypes = {ecotypes}  ecosys = {ecosys}/>
-      <Casestudy casestudies = {casestudies} industries={industries}/>
+      <Casestudy casestudies = {casestudies} filter={industries} type="industry"/>
     </React.Fragment>
   )
 }
@@ -67,7 +74,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allCasestudy {
+    allCasestudy(filter: {csplatform: {eq: "wordpress"}}) {
       edges {
         node {
           id
@@ -87,6 +94,15 @@ export const pageQuery = graphql`
           id
           title
           name
+        }
+      }
+    }
+    allPlatform {
+      edges {
+        node {
+          id
+          name
+          title
         }
       }
     }

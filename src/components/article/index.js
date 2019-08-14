@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link } from 'gatsby'
-// Import custom style for this component
-import '../article/style.scss'
+import containerStyles from "./article.module.css"
 
+console.log(containerStyles);
 const Article = () => (
-  <Link to="/" className="c-article">
-    <img alt="" src="https://source.unsplash.com/random/800x600" />
-    <h2>Name</h2>
-  </Link>
+  <div className={containerStyles.container}> 
+    <h1>Gatsby CSS Modules</h1>
+    <p>CSS Modules are cool</p>
+  </div>
 )
 
 export default Article
