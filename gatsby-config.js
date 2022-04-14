@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sass`,
+	`gatsby-source-aem`,
     {
       resolve: 'gatsby-plugin-material-ui',
       options: {
@@ -34,13 +35,6 @@ module.exports = {
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
       },
-    },
-    {
-      resolve: "gatsby-source-exemplifi",
-      options: {
-        key: "vasi-api-v1",
-        q: "yellow flowers",
-      },
-    },
+    }, 
   ],
 }
